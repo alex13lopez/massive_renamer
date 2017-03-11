@@ -5,17 +5,15 @@
 # Short Name: mrenamer
 # Author: ArenGamerZ
 # Email: arendevel@gmail.com
-# Version: 4.2
+# Version: 4.2.1-rc/stable
 # Description:
 #              This script will rename all files in the current directory
-# 	           by decimal numbers. This script is meant to be an Anime/Series renamer
-#	           to avoid to do it manually.
+# 	       by decimal numbers. This script is meant to be an Anime/Series renamer
+#	       to avoid to do it manually.
 #
 # IMPORTANT:
-#	        - Directorys will be ignored so don't worry.
-#	        - Symbolic links will also be ignored.
-#	        - Do not EVER change the name to the script!!!
-#           - Files must be ordered otherwise the script won't rename them correctly
+#		- Symbolic links will be ignored
+#		- Files must be ordered otherwise the script won't rename them correctly
 #
 # ATTENTION: Do not execute this script twice with the same files because It may crush
 #            your files.
@@ -25,7 +23,7 @@ namec=0 # Name of Caps
 nameo=0 # Name of Ovas
 
 function renamer() {
-	ls -l --full-time  | grep -v "^$1" | grep -v "^l" | sed '/^total .*/d;/mrenamer.sh/d;s/^.*.0.00 //' | while read file
+	ls --full-time | grep -v "^$1" | grep -v "^l" | sed "/^total .*/d;/$0/d;s/^.*.0.00 //" | while read file
 	do
 		if [[ ! $file == *[Oo][Vv][Aa]* ]]; then
 			namec=$((namec + 1))
